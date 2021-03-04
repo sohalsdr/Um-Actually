@@ -22,7 +22,7 @@ async def info(ctx):
     info_embed = discord.Embed(
         title="Info",
         description=f'I\'m \"Um, Actually\", a bot to help check your grammar! I\'m not perfect, but I try my best! I\'m currently in **{len(bot.guilds)}** servers!', 
-        color=discord.Color.blurple()
+        color=discord.Color.blue()
     )
     info_embed.set_footer(text='Made with <3 by ABlazingEBoy#7375')
     await ctx.send(embed=info_embed)
@@ -30,7 +30,7 @@ async def info(ctx):
 
 @bot.command(name='help', help='Shows this page.')
 async def help(ctx, args=None):
-    help_embed = discord.Embed(title="Command Usage", color=discord.Color.blurple())
+    help_embed = discord.Embed(title="Command Usage", color=discord.Color.blue())
     command_names_list = [x.name for x in bot.commands]
 
     if not args:
@@ -83,7 +83,7 @@ async def ginger(ctx, *args):
 
         print(result)
 
-        embed=discord.Embed(title='Corrected Text', description=result['result'], color=discord.Color.blurple())
+        embed=discord.Embed(title='Corrected Text', description=result['result'], color=discord.Color.blue())
         embed.set_footer(text=f'{corrections} correction(s) made; Parser: Ginger; Requested by ' + ctx.author.name)
     await ctx.send(embed=embed)
 
@@ -98,7 +98,7 @@ async def languagecheck(ctx, *args):
         matches = tool.check(text)
         result = tool.correct(text)
 
-        embed=discord.Embed(title="Corrected Text", description=result, color=discord.Color.blurple())
+        embed=discord.Embed(title="Corrected Text", description=result, color=discord.Color.blue())
         embed.set_footer(text=f'{len(matches)} correction(s) made; Parser: LanguageTool; Requested by ' + ctx.author.name)
     await ctx.send(embed=embed)
 

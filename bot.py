@@ -78,7 +78,7 @@ async def ping(ctx):
         embed=discord.Embed(title="Pong!", description=f"The ping is **{round(bot.latency *1000)}** milliseconds!", color=0x990000)
     await ctx.send(embed=embed)
 
-@bot.command(name='check', help='Runs your text through Ginger and returns the result. Note: If you want to preserve formatting, wrap your entire text in quotation marks.')
+@bot.command(name='check', help='Runs your text through Ginger and returns the result.\nNotes:\nIf you want to preserve formatting, wrap your entire text in quotation marks.\nIf you\'re not getting a response, your query might be too long (This is a weird bug with GingerIt). You\'ll either have to split up your query, or use `check-langtool`. Sorry for the inconvenience.')
 async def ginger(ctx, *args):
     if not args:
         embed=discord.Embed(title="Error", description="You didn't give me any text to parse!", color=discord.Color.red())
@@ -96,7 +96,7 @@ async def ginger(ctx, *args):
         embed.set_footer(text=f'{corrections} correction(s) made; Parser: Ginger; Requested by ' + ctx.author.name)
     await ctx.send(embed=embed)
 
-@bot.command(name='check-langtool', help='Runs your text through LanguageTool and returns the result. This parser is slower, but sometimes yields better results. Note: If you want to preserve formatting, wrap your entire text in quotation marks.')
+@bot.command(name='check-langtool', help='Runs your text through LanguageTool and returns the result. This parser is slower, but sometimes yields better results.\nNote:\nIf you want to preserve formatting, wrap your entire text in quotation marks.')
 async def languagecheck(ctx, *args):
     if not args:
         embed=discord.Embed(title="Error", description="You didn't give me any text to parse!", color=discord.Color.red())

@@ -27,6 +27,15 @@ async def info(ctx):
     info_embed.set_footer(text='Made with <3 by ABlazingEBoy#7375')
     await ctx.send(embed=info_embed)
 
+@bot.command(name='invite', help='Provides a link to invite me to your server!')
+async def invite(ctx):
+    invite_embed = discord.Embed(
+        title='Invite me to your server!',
+        url='https://discord.com/oauth2/authorize?client_id=817107141399806032&permissions=2048&scope=bot',
+        color=discord.Color.blue()
+    )
+    invite_embed.set_footer(text=f'I\'m currently in {len(bot.guilds)} servers!')
+    await ctx.send(embed=invite_embed)
 
 @bot.command(name='help', help='Shows this page.')
 async def help(ctx, args=None):

@@ -83,16 +83,25 @@ async def ginger(ctx, *args):
     if not args:
         embed=discord.Embed(title="Error", description="You didn't give me any text to parse!", color=discord.Color.red())
     else:
-        text =  ' '.join(args)
+        text =  ' '.join(args).split('.')
         print('{} arguments: {}'.format(len(args), ' '.join(args)))
-
+        results = []
         parser = GingerIt()
-        result = parser.parse(text)
-        corrections = len(result['corrections'])
+        corrections = 0
+        for x in text:
+            result = parser.parse(x)
+            results.append(result)
+            corrections = corrections + len(result['corrections'])
+
+        textresults = []
+        for y in results:
+            textresults.append(y['result'])
+        
+        output = '.'.join(textresults)
 
         print(result)
 
-        embed=discord.Embed(title='Corrected Text', description=result['result'], color=discord.Color.blue())
+        embed=discord.Embed(title='Corrected Text', description=output, color=discord.Color.blue())
         embed.set_footer(text=f'{corrections} correction(s) made; Parser: Ginger; Requested by ' + ctx.author.name)
     await ctx.send(embed=embed)
 
